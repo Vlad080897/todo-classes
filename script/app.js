@@ -36,7 +36,7 @@ class ToDoList {
 
   init() {
     this.descTaskInput.addEventListener('keypress', (event) => {
-      if (event.key === "Enter" && event.target.value.length) {
+      if (event.key === "Enter" && event.target.value.length && event.target.value.trim().length) {
         this.addNewTask()
       }
     });
@@ -203,9 +203,6 @@ class ToDoList {
   addNewTask() {
     const description = this.descTaskInput.value;
     const newTask = new Task(description);
-    if (!description.length || !description.trim().length) {
-      return;
-    };
     this.tasks.push(newTask);
     this.saveInLocalStorage();
     this.withRouter();
